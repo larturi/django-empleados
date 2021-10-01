@@ -13,12 +13,18 @@ SECRET_KEY = 'django-insecure-v(g(=!2@m0#t04dqf5ng-4$@w)$$=e#*anwl-*tx*ii=n%!!-l
 # Application definition
 
 INSTALLED_APPS = [
+    # Django Apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Local Apps
+    'applications.departamento',
+    'applications.persona',
+    'applications.home',
 ]
 
 MIDDLEWARE = [
