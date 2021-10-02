@@ -7,15 +7,11 @@ class EmpleadoAdmin(admin.ModelAdmin):
         'id',
         'first_name',
         'last_name',
-        'full_name',
         'departamento',
         'job',
         'fecha_nacimiento',
         'edad',
     )
-
-    def full_name(self, obj):
-        return obj.first_name + ' ' + obj.last_name
 
     def edad(self, obj):
         today = date.today()

@@ -13,4 +13,4 @@ class Departamento(models.Model):
         unique_together = ('name', 'short_name')
 
     def __str__(self):
-        return str(self.id) + ' - ' + self.name
+        return self.name
