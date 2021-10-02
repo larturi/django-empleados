@@ -6,8 +6,9 @@ name = "pypi"
 [packages]
 django = "3.2.7"
 unipath = "*"
-psycopg2-binary = "*"
 django-ckeditor = "*"
+psycopg2-binary = "*"
+django-admin-nmb = "*"
 
 [dev-packages]
 
