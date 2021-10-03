@@ -9,4 +9,5 @@ urlpatterns = [
     path('listar-empleados-job/<job>', views.ListEmpleadosByPuesto.as_view()),
     path('buscar-empleado/', views.ListEmpleadosByKword.as_view()),
     path('habilidades-empleado/<id>', views.ListHabilidadesEmpleado.as_view()),
+    path('detalle-empleado/<pk>', views.EmpleadoDetailView.as_view()),
 ]

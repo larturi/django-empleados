@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
+from datetime import date
+
 from .models import Empleado
 
 class ListEmpleados(ListView):
@@ -41,3 +43,13 @@ class ListHabilidadesEmpleado(ListView):
         id = self.kwargs['id']
         empleado = Empleado.objects.get(id=id)
         return empleado.habilidades.all()
+
+class EmpleadoDetailView(DetailView):
+    model = Empleado
+    template_name = "persona/detail_empleado.html"
+
+    def get_context_data(self, **kwargs):
+        today = date.today()
+        context = super(EmpleadoDetailView, self).get_context_data(**kwargs)
+        context['edad'] = today.year - self.get_object().fecha_nacimiento.year - ((today.month, today.day) < (self.get_object().fecha_nacimiento.month, self.get_object().fecha_nacimiento.day))
+        return context

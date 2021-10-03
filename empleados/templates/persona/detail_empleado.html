@@ -1,0 +1,14 @@
+<h1>Detalle del empleado</h1>
+
+<ul>
+    <li>Nombre: {{ empleado.first_name }} {{ empleado.last_name }}</li>
+    <li>Departamento: {{ empleado.departamento.name }}</li>
+    <li>Fecha de Nacimiento: {{ empleado.fecha_nacimiento }}</li>
+    <li>Edad: {{ edad }}</li>
+</ul>
+
+{% if empleado.resumen %}
+
+    {{ empleado.resumen|safe }}
+
+{% endif %}

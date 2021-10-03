@@ -31,4 +31,4 @@ class Empleado(models.Model):
     resumen = RichTextField()
 
     def __str__(self):
-        return str(self.id) + ' - ' + self.first_name + ' - ' + self.last_name
+        return self.first_name + ' - ' + self.last_name
