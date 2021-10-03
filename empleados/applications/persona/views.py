@@ -66,5 +66,10 @@ class EmpleadoCreateView(CreateView):
     fields = ('__all__')
     success_url = reverse_lazy('persona_app:success')
 
+    def form_valid(self, form):
+        empleado = form.save()
+        # Aqui puedo agregar logica extra
+        return super(EmpleadoCreateView, self).form_valid(form)
+
 class SuccessView(TemplateView):
     template_name = "persona/success.html"
