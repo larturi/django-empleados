@@ -2,8 +2,6 @@
 
 <ul>
     {% for e in object_list %}
-        <li>
-            {{ e }}
-        </li>
+        <li>{{ e.id }}. {{ e.first_name }} {{ e.full_name }}</li>
     {% endfor %}
 </ul>

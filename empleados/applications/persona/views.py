@@ -1,6 +1,13 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
 from datetime import date
+from django.views.generic.base import TemplateView
+from django.urls import reverse_lazy
+
+from django.views.generic import (
+    ListView, 
+    DetailView,
+    CreateView
+)
 
 from .models import Empleado
 
@@ -8,7 +15,6 @@ class ListEmpleados(ListView):
     template_name = 'persona/list_all.html'
     paginate_by = 3
     model = Empleado
-
 
 class ListEmpleadosByDepartamento(ListView):
     template_name = 'persona/list-by-departamento.html'
@@ -53,3 +59,12 @@ class EmpleadoDetailView(DetailView):
         context = super(EmpleadoDetailView, self).get_context_data(**kwargs)
         context['edad'] = today.year - self.get_object().fecha_nacimiento.year - ((today.month, today.day) < (self.get_object().fecha_nacimiento.month, self.get_object().fecha_nacimiento.day))
         return context
+
+class EmpleadoCreateView(CreateView):
+    model = Empleado
+    template_name = "persona/add.html"
+    fields = ('__all__')
+    success_url = reverse_lazy('persona_app:success')
+
+class SuccessView(TemplateView):
+    template_name = "persona/success.html"
