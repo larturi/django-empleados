@@ -6,7 +6,9 @@ from django.urls import reverse_lazy
 from django.views.generic import (
     ListView, 
     DetailView,
-    CreateView
+    CreateView,
+    UpdateView,
+    DeleteView
 )
 
 from .models import Empleado
@@ -71,5 +73,24 @@ class EmpleadoCreateView(CreateView):
         # Aqui puedo agregar logica extra
         return super(EmpleadoCreateView, self).form_valid(form)
 
+class EmpleadoUpdateView(UpdateView):
+    template_name = "persona/update.html"
+    model = Empleado
+    fields = [
+        'first_name',
+        'last_name',
+        'job',
+        'departamento',
+        'habilidades',
+    ]
+    success_url = reverse_lazy('persona_app:success')
+
+class EmpleadoDeleteView(DeleteView):
+    model = Empleado
+    template_name = "persona/persona-delete.html"
+    success_url = reverse_lazy('persona_app:success')
+
 class SuccessView(TemplateView):
     template_name = "persona/success.html"
+
+

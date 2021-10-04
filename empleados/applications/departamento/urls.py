@@ -1,9 +1,7 @@
 
 from django.urls import path
-
-def departamento(self):
-    print('Hola')
+from . import views
 
 urlpatterns = [
-    path('departamento/', departamento),
+    path('new-departamento/', views.NewDepartamentoView.as_view(), name='new-departamento'),
 ]
