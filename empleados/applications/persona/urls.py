@@ -5,7 +5,10 @@ from . import views
 app_name = "persona_app"
 
 urlpatterns = [
-    path('listar-empleados/', views.ListEmpleados.as_view()),
+    path('', views.InicioView.as_view(), name='inicio'),
+    path('listar-empleados/', views.ListEmpleados.as_view(), name='empleados'),
+
+    # PARA ELIMINAR
     path('listar-empleados-departamento/<short_name>', views.ListEmpleadosByDepartamento.as_view()),
     path('listar-empleados-job/<job>', views.ListEmpleadosByPuesto.as_view()),
     path('buscar-empleado/', views.ListEmpleadosByKword.as_view()),

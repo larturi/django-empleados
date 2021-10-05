@@ -13,6 +13,9 @@ from django.views.generic import (
 
 from .models import Empleado
 
+class InicioView(TemplateView):
+    template_name = "inicio.html"
+
 class ListEmpleados(ListView):
     template_name = 'persona/list_all.html'
     paginate_by = 3

@@ -1,7 +1,66 @@
-<h1>Lista Empleados</h1>
+{% extends 'base.html' %}
 
-<ul>
-    {% for e in object_list %}
-        <li>{{ e.id }}. {{ e.first_name }} {{ e.full_name }}</li>
-    {% endfor %}
-</ul>
+{% block title %} Nómina de Empleados {% endblock title %}
+
+{% block content %}
+
+{% include 'includes/header.html' %}
+
+<div class="container">
+
+    <div class="row mt-5">
+        <div class="col-12">
+            <h1 class="mb-3">Nómina de Empleados</h1>
+            <hr>
+        </div>
+
+        <div class="col-12 mt-3">
+            <form class="row g-3 float-end">
+
+                <div class="col-auto">
+                    <label for="inpurBuscar" class="visually-hidden">Buscar</label>
+                    <input type="text" class="form-control" id="inpurBuscar" placeholder="Buscar...">
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-3">Buscar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <!-- <ul>
+                {% for e in object_list %}
+                    <li>{{ e.id }}. {{ e.first_name }} {{ e.full_name }}</li>
+                {% endfor %}
+            </ul> -->
+
+            <table class="table table-striped mt-4">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Departamento</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for e in object_list %}
+                        <tr>
+                            <th scope="row">{{ e.id }}</th>
+                            <td>{{ e.first_name }}</td>
+                            <td>{{ e.last_name }}</td>
+                            <td>{{ e.departamento }}</td>
+                            <td><button class="btn btn-sm btn-secondary">Ver</button></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}

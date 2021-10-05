@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %} Inicio: Sistema de Empleados {% endblock title %}
+
+{% block content %}
+
+    {% include 'includes/header.html' %}
+
+    <main>
+
+        <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+            <div class="col-md-5 p-lg-5 mx-auto my-5">
+              <h1 class="display-4 fw-normal">Sistema de Empleados</h1>
+              <p class="lead fw-normal">Bienvenido al Sistema de Administración de Empleados.</p>
+            </div>
+        </div>
+
+        <div class="container px-4 py-5" id="hanging-icons">
+            <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+              <div class="col d-flex align-items-start">
+                <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+                  <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"></use></svg>
+                </div>
+                <div>
+                  <h2>Nómina</h2>
+                  <p>Administración de la Nómina de empleados.</p>
+                  <a href="{% url 'persona_app:empleados' %}" class="btn btn-primary">
+                    Nómina
+                  </a>
+                </div>
+              </div>
+              <div class="col d-flex align-items-start">
+                <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+                  <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill"></use></svg>
+                </div>
+                <div>
+                  <h2>Departamentos</h2>
+                  <p>Admininistración de las Areas de la Empresa.</p>
+                  <a href="#" class="btn btn-primary">
+                    Departamentos
+                  </a>
+                </div>
+              </div>
+              <div class="col d-flex align-items-start">
+                <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+                  <svg class="bi" width="1em" height="1em"><use xlink:href="#tools"></use></svg>
+                </div>
+                <div>
+                  <h2>Administración</h2>
+                  <p>Admininistración General.</p>
+                  <a href="#" class="btn btn-primary">
+                    Administración
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+    </main>
+
+{% endblock content %}
+
+<style>
+    .card-home {
+        background: red;
+    }
+</style>
