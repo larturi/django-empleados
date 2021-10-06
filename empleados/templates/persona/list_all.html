@@ -15,11 +15,11 @@
         </div>
 
         <div class="col-12 mt-3">
-            <form class="row g-3 float-end">
-
+            <form class="row g-3 float-end" method="GET">
+                {% csrf_token %}
                 <div class="col-auto">
-                    <label for="inpurBuscar" class="visually-hidden">Buscar</label>
-                    <input type="text" class="form-control" id="inpurBuscar" placeholder="Buscar...">
+                    <label for="kword" class="visually-hidden">Buscar</label>
+                    <input type="text" class="form-control" id="kword" name="kword" placeholder="Buscar...">
                 </div>
                 <div class="col-auto">
                     <button type="submit" class="btn btn-primary mb-3">Buscar</button>
@@ -30,11 +30,6 @@
 
     <div class="row">
         <div class="col-12">
-            <!-- <ul>
-                {% for e in object_list %}
-                    <li>{{ e.id }}. {{ e.first_name }} {{ e.full_name }}</li>
-                {% endfor %}
-            </ul> -->
 
             <table class="table table-striped mt-4">
                 <thead>
@@ -47,17 +42,54 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for e in object_list %}
+                    {% for e in empleados %}
                         <tr>
                             <th scope="row">{{ e.id }}</th>
                             <td>{{ e.first_name }}</td>
                             <td>{{ e.last_name }}</td>
                             <td>{{ e.departamento }}</td>
-                            <td><button class="btn btn-sm btn-secondary">Ver</button></td>
+                            <td><a href="{% url 'persona_app:empleado_detail' e.id %}" class="btn btn-sm btn-secondary">Ver</a></td>
                         </tr>
                     {% endfor %}
                 </tbody>
             </table>
+
+            {% if is_paginated %}
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+
+                        {% if page_obj.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{page_obj.previous_page_number}}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                                </a>
+                            </li>
+                        {% endif %}
+
+                        {% for pagina in paginator.page_range %}
+
+                            {% ifequal pagina page_obj.number %}
+                                <li class="page-item active"><a class="page-link" href="?page={{pagina}}">{{pagina}}</a></li>
+                            {% else %}
+                                <li class="page-item"><a class="page-link" href="?page={{pagina}}">{{pagina}}</a></li>
+                            {% endifequal %}
+
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{page_obj.next_page_number}}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                                </a>
+                            </li>
+                        {% endif %}
+
+                    </ul>
+                </nav>
+            {% endif %}
+
         </div>
     </div>
 

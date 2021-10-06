@@ -2,6 +2,7 @@ from django.shortcuts import render
 from datetime import date
 from django.views.generic.base import TemplateView
 from django.urls import reverse_lazy
+from django.db.models import Q
 
 from django.views.generic import (
     ListView, 
@@ -18,8 +19,15 @@ class InicioView(TemplateView):
 
 class ListEmpleados(ListView):
     template_name = 'persona/list_all.html'
-    paginate_by = 3
-    model = Empleado
+    paginate_by = 4
+    ordering = 'first_name'
+    context_object_name = 'empleados'
+
+    def get_queryset(self):
+        palabra_clave = self.request.GET.get('kword', '')
+        lista = Empleado.objects.filter(Q(first_name__icontains=palabra_clave) | Q(last_name__icontains=palabra_clave))
+
+        return lista
 
 class ListEmpleadosByDepartamento(ListView):
     template_name = 'persona/list-by-departamento.html'
