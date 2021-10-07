@@ -25,6 +25,17 @@ urlpatterns = [
         views.ListEmpleadosByDepartamento.as_view(),
         name='listar_empleados_departamento'
     ),
+    path(
+        'update-empleado/<pk>', 
+        views.EmpleadoUpdateView.as_view(), 
+        name='update_empleado'
+    ),
+    path(
+        'delete-empleado/<pk>', 
+        views.EmpleadoDeleteView.as_view(), 
+        name='delete_empleado'
+    ),
+
 
     # PARA ELIMINAR
     path('listar-empleados-job/<job>', views.ListEmpleadosByPuesto.as_view()),
@@ -32,6 +43,4 @@ urlpatterns = [
     path('habilidades-empleado/<id>', views.ListHabilidadesEmpleado.as_view()),
     path('add-empleado/', views.EmpleadoCreateView.as_view()),
     path('success/', views.SuccessView.as_view(), name='success'),
-    path('update-empleado/<pk>', views.EmpleadoUpdateView.as_view(), name='update-empleado'),
-    path('delete-empleado/<pk>', views.EmpleadoDeleteView.as_view(), name='delete-empleado'),
 ]

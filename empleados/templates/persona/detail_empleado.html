@@ -1,14 +1,40 @@
-<h1>Detalle del empleado</h1>
+{% extends 'base.html' %}
 
-<ul>
-    <li>Nombre: {{ empleado.first_name }} {{ empleado.last_name }}</li>
-    <li>Departamento: {{ empleado.departamento.name }}</li>
-    <li>Fecha de Nacimiento: {{ empleado.fecha_nacimiento }}</li>
-    <li>Edad: {{ edad }}</li>
-</ul>
+{% block title %}
+    Detalle del empleado
+{% endblock title %}
 
-{% if empleado.resumen %}
+{% block content %}
+        
+    {% include "includes/header.html" %}
 
-    {{ empleado.resumen|safe }}
+    <div class="container">
 
-{% endif %}
+        <div class="row mt-5">
+            <div class="col-12">
+                <h1 class="mb-3">Detalle del empleado</h1>
+                <hr>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <ul>
+                    <li>Nombre: {{ empleado.first_name }} {{ empleado.last_name }}</li>
+                    <li>Departamento: {{ empleado.departamento.name }}</li>
+                    <li>Fecha de Nacimiento: {{ empleado.fecha_nacimiento }}</li>
+                    <li>Edad: {{ edad }}</li>
+                </ul>
+
+                {% if empleado.resumen %}
+
+                    {{ empleado.resumen|safe }}
+
+                {% endif %}
+            </div>
+        </div>
+    
+    </div>
+
+{% endblock content %}  
