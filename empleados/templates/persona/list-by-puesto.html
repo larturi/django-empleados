@@ -1,4 +1,10 @@
-<h1>Lista Empleados por Puesto</h1>
+{% extends 'base.html' %}
+
+{% block title %}
+    Empleados del Departamento
+{% endblock title %}
+
+<h1>Lista Empleados del Departamento</h1>
 
 <ul>
     {% for e in object_list %}

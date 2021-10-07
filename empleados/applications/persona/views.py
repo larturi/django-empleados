@@ -31,6 +31,9 @@ class ListEmpleados(ListView):
 
 class ListEmpleadosByDepartamento(ListView):
     template_name = 'persona/list-by-departamento.html'
+    paginate_by = 4
+    ordering = 'first_name'
+    context_object_name = 'empleados'
 
     def get_queryset(self):
         departamento = self.kwargs['short_name']
@@ -100,7 +103,6 @@ class EmpleadoDeleteView(DeleteView):
     model = Empleado
     template_name = "persona/persona-delete.html"
     success_url = reverse_lazy('persona_app:success')
-
 class SuccessView(TemplateView):
     template_name = "persona/success.html"
 
