@@ -1,8 +1,18 @@
 from django.shortcuts import render
 from django.views.generic.edit import FormView
+from django.views.generic import ListView
+
 from .forms import NewDepartamentoForm
 from applications.persona.models import Empleado
 from .models import Departamento
+
+class DepartamentoListView(ListView):
+    model = Departamento
+    template_name = "departamento/lista.html"
+    paginate_by = 4
+    ordering = 'name'
+    context_object_name = 'departamentos'
+
 class NewDepartamentoView(FormView):
     template_name = 'departamento/new.html'
     form_class = NewDepartamentoForm
