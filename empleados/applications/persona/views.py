@@ -12,6 +12,8 @@ from django.views.generic import (
     DeleteView
 )
 
+from .forms import EmpleadoUpdateForm
+
 from .models import Empleado
 
 class InicioView(TemplateView):
@@ -90,19 +92,13 @@ class EmpleadoCreateView(CreateView):
 class EmpleadoUpdateView(UpdateView):
     template_name = "persona/update.html"
     model = Empleado
-    fields = [
-        'first_name',
-        'last_name',
-        'job',
-        'departamento',
-        'habilidades',
-    ]
-    success_url = reverse_lazy('persona_app:success')
+    form_class = EmpleadoUpdateForm
+    success_url = reverse_lazy('persona_app:empleados')
 
 class EmpleadoDeleteView(DeleteView):
     model = Empleado
     template_name = "persona/persona-delete.html"
-    success_url = reverse_lazy('persona_app:success')
+    success_url = reverse_lazy('persona_app:empleados')
 class SuccessView(TemplateView):
     template_name = "persona/success.html"
 

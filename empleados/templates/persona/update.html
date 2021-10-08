@@ -13,12 +13,25 @@
             <h1 class="mb-3">Editar Empleado</h1>
             <hr>
         </div>
-        
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Guardar</button>
-        </form>
+
+        <div class="col-md-5">
+            <form method="POST">
+                {% csrf_token %}
+
+                <label>Nombre:</label>
+                {{ form.first_name }}
+                <label>Apellido:</label>
+                {{ form.last_name }}
+                <label>Job:</label>
+                {{ form.job }}
+                <label>Departamento:</label>
+                {{ form.departamento }}
+                <label>Habilidades:</label>
+                {{ form.habilidades }}
+
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+        </div>
 
     </div>
 </div>
