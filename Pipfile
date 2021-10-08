@@ -9,6 +9,7 @@ unipath = "*"
 django-ckeditor = "*"
 psycopg2-binary = "*"
 django-admin-nmb = "*"
+pillow = "*"
 
 [dev-packages]
 

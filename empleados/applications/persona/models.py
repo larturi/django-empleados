@@ -29,6 +29,7 @@ class Empleado(models.Model):
     departamento = models.ForeignKey(Departamento, on_delete=models.CASCADE)
     habilidades = models.ManyToManyField(Habilidades)
     resumen = RichTextField()
+    avatar = models.ImageField(upload_to='empleado', blank=True, null=True)
 
     def __str__(self):
         return self.first_name + ' - ' + self.last_name
