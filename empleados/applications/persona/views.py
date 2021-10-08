@@ -12,7 +12,7 @@ from django.views.generic import (
     DeleteView
 )
 
-from .forms import EmpleadoUpdateForm
+from .forms import EmpleadoUpdateForm, EmpleadoCreateForm
 
 from .models import Empleado
 
@@ -81,8 +81,8 @@ class EmpleadoDetailView(DetailView):
 class EmpleadoCreateView(CreateView):
     model = Empleado
     template_name = "persona/add.html"
-    fields = ('__all__')
-    success_url = reverse_lazy('persona_app:success')
+    form_class = EmpleadoCreateForm
+    success_url = reverse_lazy('persona_app:empleados')
 
     def form_valid(self, form):
         empleado = form.save()
@@ -90,8 +90,8 @@ class EmpleadoCreateView(CreateView):
         return super(EmpleadoCreateView, self).form_valid(form)
 
 class EmpleadoUpdateView(UpdateView):
-    template_name = "persona/update.html"
     model = Empleado
+    template_name = "persona/update.html"
     form_class = EmpleadoUpdateForm
     success_url = reverse_lazy('persona_app:empleados')
 

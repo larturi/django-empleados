@@ -35,12 +35,16 @@ urlpatterns = [
         views.EmpleadoDeleteView.as_view(), 
         name='delete_empleado'
     ),
+    path(
+        'add-empleado/', 
+        views.EmpleadoCreateView.as_view(),
+        name='add_empleado'
+    ),
 
 
     # PARA ELIMINAR
     path('listar-empleados-job/<job>', views.ListEmpleadosByPuesto.as_view()),
     path('buscar-empleado/', views.ListEmpleadosByKword.as_view()),
     path('habilidades-empleado/<id>', views.ListHabilidadesEmpleado.as_view()),
-    path('add-empleado/', views.EmpleadoCreateView.as_view()),
     path('success/', views.SuccessView.as_view(), name='success'),
 ]
