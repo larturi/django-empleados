@@ -45,6 +45,7 @@ class EmpleadoCreateForm(forms.ModelForm):
             'job',
             'departamento',
             'habilidades',
+            'avatar',
         )
         widgets = {
             'first_name': forms.TextInput(
@@ -63,6 +64,9 @@ class EmpleadoCreateForm(forms.ModelForm):
                 attrs={'class':'form-control mb-2'}
             ),
             'habilidades': forms.SelectMultiple(
+                attrs={'class':'form-control mb-2'}
+            ),
+            'avatar': forms.FileInput(
                 attrs={'class':'form-control mb-2'}
             ),
         }

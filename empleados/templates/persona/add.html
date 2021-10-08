@@ -15,7 +15,7 @@
         </div>
 
         <div class="col-md-5">
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
 
                 <label>Nombre:</label>
@@ -30,6 +30,8 @@
                 {{ form.departamento }}
                 <label>Habilidades:</label>
                 {{ form.habilidades }}
+                <label>Avatar:</label>
+                {{ form.avatar }}
 
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </form>
