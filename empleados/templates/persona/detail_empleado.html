@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}
     Detalle del empleado
 {% endblock title %}
@@ -11,26 +13,34 @@
     <div class="container">
 
         <div class="row mt-5">
-            <div class="col-12">
-                <h1 class="mb-3">Detalle del empleado</h1>
-                <hr>
+            <div class="col-auto">
+                {% if empleado.avatar %}
+                    <img src="{{ empleado.avatar.url }}" alt="avatar" class="avatar">
+                {% else %}
+                    <img src="{% static 'img/defaultAvatar.jpg' %}" alt="avatar" class="avatar">
+                {% endif %}
             </div>
-
+            <div class="col-11">
+                <h1 class="mb-3">{{ empleado.first_name }} {{ empleado.last_name }}</h1>
+            </div>
+            <hr>
         </div>
 
         <div class="row">
-            <div class="col-12">
-                <ul>
-                    <li>Nombre: {{ empleado.first_name }} {{ empleado.last_name }}</li>
-                    <li>Departamento: {{ empleado.departamento.name }}</li>
-                    <li>Fecha de Nacimiento: {{ empleado.fecha_nacimiento }}</li>
-                    <li>Edad: {{ edad }}</li>
-                </ul>
+            
+            <div class="col-10">
+                <p>Puesto: {{ empleado.get_job_display }}</p>
+                <p>Departamento: {{ empleado.departamento.name }}</p>
+                <p>Fecha de Nacimiento: {{ empleado.fecha_nacimiento }}</p>
+                <p>Edad: {{ edad }}</p>
+                <p>Habilidades:</p>
+
+                {% for h in empleado.habilidades.all %}
+                  <span class="badge bg-primary">{{ h }}</span>
+                {% endfor %}
 
                 {% if empleado.resumen %}
-
-                    {{ empleado.resumen|safe }}
-
+                    <p>Resumen: {{ empleado.resumen|safe }}</p>
                 {% endif %}
             </div>
         </div>
