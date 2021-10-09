@@ -29,8 +29,8 @@ class EmpleadoUpdateForm(forms.ModelForm):
             'departamento': forms.Select(
                 attrs={'class':'form-control mb-2'}
             ),
-            'habilidades': forms.SelectMultiple(
-                attrs={'class':'form-control mb-2'}
+            'habilidades': forms.CheckboxSelectMultiple(
+                attrs={'class':'form-check-input'}
             ),
         }
 
@@ -62,8 +62,8 @@ class EmpleadoCreateForm(forms.ModelForm):
             'departamento': forms.Select(
                 attrs={'class':'form-control mb-2'}
             ),
-            'habilidades': forms.SelectMultiple(
-                attrs={'class':'form-control mb-2'}
+            'habilidades': forms.CheckboxSelectMultiple(
+                attrs={'class':'column-checkbox'}
             ),
             'avatar': forms.FileInput(
                 attrs={'class':'form-control mb-2'}
