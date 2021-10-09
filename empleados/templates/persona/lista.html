@@ -16,11 +16,11 @@
 
         <div class="col-12 mt-3">
             <div class="row">
-                <div class="col-6">
-                    <a href="{% url 'persona_app:add_empleado' %}" class="btn btn-warning">Registrar Empleado</a>
+                <div class="col-lg-6">
+                    <a href="{% url 'persona_app:add_empleado' %}" class="btn btn-warning btn-resoponsive">Registrar Empleado</a>
                 </div>
 
-                <div class="col-6">
+                <div class="col-lg-6 form-empleados">
                     <form class="row g-3 float-end" method="GET">
                         {% csrf_token %}
                         <div class="col-auto">
@@ -37,7 +37,7 @@
     </div>
 
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 table-responsive">
 
             <table class="table table-striped mt-4">
                 <thead>
@@ -57,9 +57,9 @@
                             <td>{{ e.last_name }}</td>
                             <td>{{ e.departamento }}</td>
                             <td>
-                                <a href="{% url 'persona_app:delete_empleado' e.id %}" class="btn btn-sm btn-danger float-end mx-2">Eliminar</a>
-                                <a href="{% url 'persona_app:update_empleado' e.id %}" class="btn btn-sm btn-success float-end mx-2">Editar</a>
-                                <a href="{% url 'persona_app:empleado_detail' e.id %}" class="btn btn-sm btn-primary float-end mx-2">Ver</a>
+                                <a href="{% url 'persona_app:delete_empleado' e.id %}" class="btn btn-sm btn-danger float-end mx-2 mb-2 action-btn">Eliminar</a>
+                                <a href="{% url 'persona_app:update_empleado' e.id %}" class="btn btn-sm btn-success float-end mx-2 mb-2 action-btn">Editar</a>
+                                <a href="{% url 'persona_app:empleado_detail' e.id %}" class="btn btn-sm btn-primary float-end mx-2 mb-2 action-btn">Ver</a>
                             </td>
                         </tr>
                     {% endfor %}
