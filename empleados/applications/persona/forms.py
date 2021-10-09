@@ -1,6 +1,5 @@
 
 from django import forms
-from django.forms import widgets
 from .models import Empleado
 
 class EmpleadoUpdateForm(forms.ModelForm):

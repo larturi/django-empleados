@@ -20,7 +20,7 @@ class InicioView(TemplateView):
     template_name = "inicio.html"
 
 class ListEmpleados(ListView):
-    template_name = 'persona/list_all.html'
+    template_name = 'persona/lista.html'
     paginate_by = 4
     ordering = 'first_name'
     context_object_name = 'empleados'
@@ -80,7 +80,7 @@ class EmpleadoDetailView(DetailView):
 
 class EmpleadoCreateView(CreateView):
     model = Empleado
-    template_name = "persona/add.html"
+    template_name = "persona/new.html"
     form_class = EmpleadoCreateForm
     success_url = reverse_lazy('persona_app:empleados')
 

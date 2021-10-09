@@ -15,16 +15,24 @@
         </div>
 
         <div class="col-12 mt-3">
-            <form class="row g-3 float-end" method="GET">
-                {% csrf_token %}
-                <div class="col-auto">
-                    <label for="kword" class="visually-hidden">Buscar</label>
-                    <input type="text" class="form-control" id="kword" name="kword" placeholder="Buscar...">
+            <div class="row">
+                <div class="col-6">
+                    <a href="{% url 'persona_app:add_empleado' %}" class="btn btn-warning">Registrar Empleado</a>
                 </div>
-                <div class="col-auto">
-                    <button type="submit" class="btn btn-primary mb-3">Buscar</button>
+
+                <div class="col-6">
+                    <form class="row g-3 float-end" method="GET">
+                        {% csrf_token %}
+                        <div class="col-auto">
+                            <label for="kword" class="visually-hidden">Buscar</label>
+                            <input type="text" class="form-control" id="kword" name="kword" placeholder="Buscar...">
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-primary mb-3">Buscar</button>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 
