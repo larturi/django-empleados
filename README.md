@@ -8,6 +8,13 @@ Instalar dependencias:
 pipenv install
 ```
 
+Crear el .env
+```
+cp .env.dist .env
+
+# Modificar los valores si es necesario
+```
+
 Crear migraciones:
 ```
 python3 manage.py makemigrations
