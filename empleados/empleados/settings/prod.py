@@ -37,7 +37,7 @@ STATICFILES_DIRS = (
 )
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR.parent/'media/'
+# MEDIA_ROOT = BASE_DIR.parent/'media/'
 
 MIDDLEWARE_CLASSES = (
     # Simplified static file serving.
