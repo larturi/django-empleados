@@ -30,7 +30,10 @@ class EmpleadoUpdateForm(forms.ModelForm):
                 attrs={'class':'form-control mb-2'}
             ),
             'habilidades': forms.CheckboxSelectMultiple(
-                attrs={'class':'form-check-input'}
+                attrs={'class':'column-checkbox'}
+            ),
+            'avatar': forms.FileInput(
+                attrs={'class':'form-control mb-2'}
             ),
         }
 

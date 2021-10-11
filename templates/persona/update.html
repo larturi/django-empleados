@@ -15,7 +15,7 @@
         </div>
 
         <div class="col-md-5">
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
 
                 <label>Nombre:</label>
@@ -28,8 +28,12 @@
                 {{ form.job }}
                 <label>Departamento:</label>
                 {{ form.departamento }}
+                
                 <label>Habilidades:</label>
-                {{ form.habilidades }}
+                <div class="col-12" style="margin: -10px -30px;">
+                    {{ form.habilidades }}
+                </div>
+               
 
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </form>
