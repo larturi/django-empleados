@@ -14,14 +14,11 @@ ALLOWED_HOSTS = ['*']
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+import dj_database_url
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'USER': "ryjsoijwepefoi",
-        'NAME': "dd11huafl1er0o",
-        'PASSWORD': "da71dcbc444db421a743df683734bc4ca04db857eaa951f1151e646f3701fca0",
-        'HOST': "ec2-3-233-100-43.compute-1.amazonaws.com",
-    }
+    'default': dj_database_url.config(
+        default=env('DATABASE_URL')
+    )
 }
 
 # Static files (CSS, JavaScript, Images)
